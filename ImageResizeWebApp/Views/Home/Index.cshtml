@@ -9,9 +9,11 @@
 <style>
     html {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		
     }
     main {
         margin: 20px;
+		
     }
     #gallery-note {
         font-size: smaller
@@ -39,17 +41,68 @@
         display: block;
         margin-top 1.5rem;
     }
+	.header {
+    
+   
+background-color: #336699; 
+color: #FFFFFF;
+}
+body {
+    
+    background-color: #48976A;
+   }
+   
+
+.button1 {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: red;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button1 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button1 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button1:hover span {
+    padding-right: 25px;
+  }
+  
+  .button1:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 </style>
 
 
 <main>
-    <div class="box header">
-        <h1><span class="fa fa-user-circle-o"></span> <span id="page-title">ImageResizer</span></h1>
+    <div class="box header" style="background-color: #48976A" >
+        <h1><span class="fa fa-user-circle-o"></span> <span id="page-title">ImageUploader</span></h1>
     </div>
     
-    <div class="box content">
+    <div class="box content" >
         <hr>
-        <h2>Upload photos</h2>
+        <h2 style="color:white;">Upload photos</h2>
         <div>
             <form action="/api/images/upload"
                  class="dropzone needsclick dz-clickable" 
@@ -64,7 +117,7 @@
                 </div>
             </form>
         </div>
-<h2>Generated Thumbnails</h2>
+		<button type="button" onclick="fetchImageLinks()" class="button1" style="vertical-align:middle"><span>View</span></button>
             <!-- <p><span id="gallery-note">Gallery refreshes from storage container image links every 5 seconds.</span></p> -->
             <div id="stored-images"></div>
 
@@ -72,20 +125,14 @@
             <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
                 <div class="slides"></div>
                 <h3 class="title"></h3>
-                <a class="prev">‹</a>
-                <a class="next">›</a>
+                <a class="prev">â€¹</a>
+                <a class="next">â€º</a>
                 <a class="play-pause"></a>
                 <ol class="indicator"></ol>
             </div>
         </div>
     </div>
-    <div class="box footer">
-        <hr>
-        <div class="privacy">
-            <p>This app has no official privacy policy. Your data will be uploaded to a service in order produce a picture.
-                Your images will be public once you upload them and there is no automated way to remove them.</p>
-        </div>
-    </div>
+    
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.js"></script>
@@ -159,3 +206,4 @@
         }
     };
 </script>
+
